@@ -10,7 +10,7 @@ watch for it
 | csv and xml  |csv-loader, xml-loader|
 
 
-plugins
+|plugins|remark|
 |--------------------|-------------------------|
 |clean-webpack-plugin| To clean the dist folder|
-|HtmlWebpackPlugin| html web pack |
+|HtmlWebpackPlugin| html template  |
