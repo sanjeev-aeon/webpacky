@@ -11,5 +11,6 @@ watch for it
 
 
 plugins
+|--------------------|-------------------------|
 |clean-webpack-plugin| To clean the dist folder|
 |HtmlWebpackPlugin| html web pack |
