@@ -7,3 +7,4 @@ watch for it
 |file     | file-loader              |
 |---------|--------------------------|
 |css      | style-loader, css-loader|
+| csv and xml  |csv-loader, xml-loader|
