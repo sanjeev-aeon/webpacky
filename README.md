@@ -14,3 +14,4 @@ watch for it
 |--------------------|-------------------------|
 |clean-webpack-plugin| To clean the dist folder|
 |HtmlWebpackPlugin| html template  |
+|WebpackManifestPlugin | The manifest data can be extracted into a json|
