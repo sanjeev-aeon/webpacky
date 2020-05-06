@@ -11,7 +11,8 @@ module.exports = {
     },
     module: {
         rules: [{ test: /\.txt$/, use: 'raw-loader' },
-        { test: /\.css/, use: ['style-loader', 'css-loader'] }
+        { test: /\.css/, use: ['style-loader', 'css-loader'] },
+        { test: /\.(gif|jpg)/, use: 'file-loader' }
         ]
     },
     plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
