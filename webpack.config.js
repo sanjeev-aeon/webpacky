@@ -4,7 +4,10 @@ const consolePlugIn = require('./plugins/console');
 
 module.exports = {
     mode: 'development',
-    entry: { 'app': './src/index.js' },
+    entry: {
+        app: './src/index.js',
+        print: './src/print.js'
+    },
     output: {
         path: path.resolve(__dirname, 'out', 'dist'),
         filename: '[name].[contentHash].bundle.js'
