@@ -1,7 +1,7 @@
 const path = require('path');
 const htmlwebpackPlugin = require('html-webpack-plugin');
 const consolePlugIn = require('./plugins/console');
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
@@ -18,7 +18,7 @@ module.exports = {
         { test: /\.(gif|jpg)/, use: 'file-loader' }
         ]
     },
-    plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
+    plugins: [new CleanWebpackPlugin({ cleanStaleWebpackAssets: true }), new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
