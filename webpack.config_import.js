@@ -4,8 +4,9 @@ const consolePlugIn = require('./plugins/console');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './src/index.js',
-        print: './src/print.js'
+        app: { import: './src/index.js', dependOn: 'shared' },
+        print: { import: './src/print.js', dependOn: 'shared' },
+        shared: './src/shared.js'
     },
     output: {
         path: path.resolve(__dirname, 'out', 'dist'),
@@ -18,9 +19,6 @@ module.exports = {
         ]
     },
     plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
-    optimization: {
-        splitChunks: { chunks: 'all' }
-    },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
