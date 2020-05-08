@@ -19,6 +19,7 @@ module.exports = {
     },
     plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
     optimization: {
+        runtimeChunk: 'single',
         splitChunks: { chunks: 'all' }
     },
     devServer: {
