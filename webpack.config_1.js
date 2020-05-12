@@ -4,27 +4,17 @@ const consolePlugIn = require('./plugins/console');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './src/index.js',
-        xToY: './src/lib/xToY.js'
+        app: './src/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'out', 'dist'),
-        filename: '[name].[contentHash].bundle.js',
-        library: 'xToY'
+        filename: '[name].[contentHash].bundle.js'
     },
     module: {
         rules: [{ test: /\.txt$/, use: 'raw-loader' },
         { test: /\.css/, use: ['style-loader', 'css-loader'] },
         { test: /\.(gif|jpg)/, use: 'file-loader' }
         ]
-    },
-    externals: {
-        lodash: {
-            commonjs: 'lodash',
-            amd: 'lodash',
-            commonjs2: 'lodash',
-            root: '_'
-        }
     },
     plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
     optimization: {
