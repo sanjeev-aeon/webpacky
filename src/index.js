@@ -6,6 +6,7 @@ import print from './print';
 import shared from './shared';
 import _ from 'lodash';
 import z from './z1';
+import { add } from './math';
 
 const img = document.createElement('img');
 img.src = imgsrc
@@ -16,3 +17,4 @@ hello(text);
 shared();
 z(text);
 console.log('lodash version' + _.VERSION);
+add(1, 2);

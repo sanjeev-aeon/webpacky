@@ -2,7 +2,7 @@ const path = require('path');
 const htmlwebpackPlugin = require('html-webpack-plugin');
 const consolePlugIn = require('./plugins/console');
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         app: './src/index.js',
         xToY: './src/lib/xToY.js'
@@ -10,30 +10,35 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'out', 'dist'),
         filename: '[name].[contentHash].bundle.js',
-        library: 'xToY'
+        library: 'xToY',
+        libraryTarget: 'umd'
     },
     module: {
-        rules: [{ test: /\.txt$/, use: 'raw-loader' },
-        { test: /\.css/, use: ['style-loader', 'css-loader'] },
-        { test: /\.(gif|jpg)/, use: 'file-loader' }
+        rules: [
+            { test: /\.txt$/, use: 'raw-loader' },
+            { test: /\.css/, use: ['style-loader', 'css-loader'] },
+            { test: /\.(gif|jpg)/, use: 'file-loader' }
         ]
     },
-    externals: {
-        lodash: {
-            commonjs: 'lodash',
-            amd: 'lodash',
-            commonjs2: 'lodash',
-            root: '_'
-        }
-    },
+    // },
+    // externals: {
+    //     lodash: {
+    //         commonjs: 'lodash',
+    //         amd: 'lodash',
+    //         commonjs2: 'lodash',
+    //         root: '_'
+    //     }
+    // },
     plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
     optimization: {
         moduleIds: 'hashed',
         runtimeChunk: 'single',
+        usedExports: true,
+        sideEffects: false,
         splitChunks: {
             cacheGroups: {
                 vendor: {
-                    test: /[\\]node_modules[\\]/,
+                    test: /[\\/]node_modules[\\/]/,
                     name: "thirdparty",
                     chunks: 'all'
                 }
@@ -41,6 +46,7 @@ module.exports = {
         }
 
     },
+
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
