@@ -4,8 +4,7 @@ const consolePlugIn = require('./plugins/console');
 module.exports = {
     mode: 'development',
     entry: {
-        app: './src/index.js',
-        print: './src/print.js'
+        app: './src/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'out', 'dist'),
@@ -20,7 +19,16 @@ module.exports = {
     plugins: [new htmlwebpackPlugin({ template: './src/index.html' }), new consolePlugIn()],
     optimization: {
         runtimeChunk: 'single',
-        splitChunks: { chunks: 'all' }
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\]node_modules[\\]/,
+                    name: "thirdparty",
+                    chunks: 'all'
+                }
+            }
+        }
+
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
